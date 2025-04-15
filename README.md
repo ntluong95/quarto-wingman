@@ -23,6 +23,36 @@
 
 - Comment Exclusion: None of these rules are applied within the comment scope (comment.line.number-sign.python), ensuring that comment text remains unaltered.
 
+- Highlighting footnote, both in-line footnote and block footnote references or definitions (e.g., [^1]: Note content or [^1] references).
+  
+
+## Configurations
+
+entity.name.namespace
+
+meta.function-call.generic.python
+
+variable.parameter.function-call.python
+
+text.html.quarto.quartofn
+
+
+"editor.tokenColorCustomizations": {
+  "textMateRules": [
+    {
+      "scope": [
+        "meta.footnote.inline.quarto",
+        "meta.footnote.reference.quarto",
+        "meta.footnote.definition.quarto"
+      ],
+      "settings": {
+        "foreground": "#c586c0",
+        "fontStyle": "italic"
+      }
+    }
+  ]
+}
+
 ## Installation
 
 ```bash

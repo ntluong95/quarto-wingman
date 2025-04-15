@@ -9,7 +9,10 @@ execute:
     echo: false
 ---
 
+
+
 ```{r}
+# | label: Virtual environment setting
 pacman::p_load(reticulate, tidyverse, tidytext)
 use_virtualenv("../.venv", required = TRUE)
 ```
@@ -35,12 +38,30 @@ fsi_raw = pd.read_csv("data/food_supply.csv")
 pop_raw = pd.read_csv("data/population.csv")
 ```
 
+Here is a footnote reference,[^1] and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+
+    Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+        { some.code }
+
+    The whole paragraph can be indented, or just the first
+    line.  In this way, multi-paragraph footnotes work like
+    multi-paragraph list items.
+
+This paragraph won't be part of the note, because it
+isn't indented.
+
+^[I am a footnote]
 
 ```{python}
 # | eval: true
 # | output: false
 # | label: Subset and clean data
-
 
 # Query data according to timeframe
 def subset_data(df: pd.DataFrame, index: str) -> pd.DataFrame:
@@ -375,7 +396,9 @@ yearly_data = final_data.groupby("year")[["sdi", "fsi", "cmi"]].mean().reset_ind
 # Normalize each indicator to the range [0, 1]
 cols_to_normalize = ["sdi", "fsi", "cmi"]
 for col in cols_to_normalize:
-    yearly_data[col] = (yearly_data[col] - yearly_data[col].min()) / (yearly_data[col].max() - yearly_data[col].min())
+    yearly_data[col] = (yearly_data[col] - yearly_data[col].min()) / (
+        yearly_data[col].max() - yearly_data[col].min()
+    )
 
 # Create the time series plot using the normalized data
 time_series_plot = px.line(
@@ -410,6 +433,8 @@ animated_scatter = px.scatter(
 ```{r}
 #| output: false
 # | label: Heatmap child mortality
+
+as.factor()
 
 extrafont::loadfonts(device = "win")
 library(shiny)

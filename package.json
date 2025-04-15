@@ -1,8 +1,8 @@
 {
-  "name": "quarto-wingsman",
-  "displayName": "Quarto Wingsman",
+  "name": "quarto-wingman",
+  "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -24,7 +24,6 @@
     "r",
     "quarto"
   ],
-  "main": "./dist/extension.js",
   "contributes": {
     "grammars": [
       {
@@ -35,6 +34,13 @@
           "markup.fenced_code.block.markdown",
           "text.html.quarto",
           "text.html.markdown"
+        ]
+      },
+      {
+        "scopeName": "text.html.quarto.quartofn",
+        "path": "./syntaxes/quartofn.tmLanguage.json",
+        "injectTo": [
+          "text.html.quarto"
         ]
       }
     ]
