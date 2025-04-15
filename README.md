@@ -24,6 +24,12 @@
 - Comment Exclusion: None of these rules are applied within the comment scope (comment.line.number-sign.python), ensuring that comment text remains unaltered.
 
 - Highlighting footnote, both in-line footnote and block footnote references or definitions (e.g., [^1]: Note content or [^1] references).
+
+Run inline code in R and Python
+foo = 10 * 10
+bar = 20 + 30
+
+# >>> foo + bar
   
 
 ## Configurations

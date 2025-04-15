@@ -7,6 +7,10 @@ import country_converter as coco
 import matplotlib.pyplot as plt
 from great_tables import GT, html
 
+foo = 10 * 10
+bar = 20 + 30
+
+# >>> foo + bar
 
 # Load the data
 sdi_raw = pd.read_csv("data/sdi.csv")
