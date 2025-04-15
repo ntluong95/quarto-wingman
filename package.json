@@ -26,9 +26,10 @@
   ],
   "activationEvents": [
     "onLanguage:python",
-    "onLanguage:r"
+    "onLanguage:r",
+    "onLanguage:quarto"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [],
     "grammars": [
@@ -49,15 +50,29 @@
           "text.html.quarto"
         ]
       }
+    ],
+    "languages": [
+      {
+        "id": "text.html.quarto",
+        "aliases": [
+          "Quarto"
+        ],
+        "extensions": [
+          ".qmd"
+        ]
+      }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "lint": "eslint src --ext ts",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "test": "node ./out/test/runTest.js"
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
   },
   "devDependencies": {
     "@types/vscode": "1.96.0",
@@ -69,7 +84,11 @@
     "@typescript-eslint/parser": "^8.25.0",
     "glob": "^7.2.0",
     "mocha": "^10.8.2",
+    "ts-jest": "^29.1.2",
+    "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
     "vscode-test": "^1.3.0"
   },
   "dependencies": {}

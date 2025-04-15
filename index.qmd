@@ -432,7 +432,7 @@ animated_scatter = px.scatter(
 
 ```{r}
 #| output: false
-# | label: Heatmap child mortality
+#| label: Heatmap child mortality
 
 as.factor()
 

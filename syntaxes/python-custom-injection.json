@@ -1,38 +1,38 @@
 {
-	"name": "Python Custom Injection",
-	"scopeName": "python.customInjection",
-	"injectionSelector": "L:meta.embedded.block.python - comment.line.number-sign.python, L:markup.fenced_code.block.markdown - comment.line.number-sign.python",
-	"patterns": [
-	  {
-		"match": "(?<=\\bfrom\\s)([a-zA-Z_][a-zA-Z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z0-9_]*)*)(?=\\s+import\\b)",
-		"name": "entity.name.namespace"
-	  },
-	  {
-		"match": "(?<=\\bimport\\s)([a-zA-Z_][a-zA-Z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z0-9_]*)*)(?=\\b)",
-		"name": "entity.name.namespace"
-	  },
-	  {
-		"match": "(?<=\\bas\\s)([a-zA-Z_][a-zA-Z0-9_]*)",
-		"name": "entity.name.namespace"
-	  },
-	  {
-		"match": "(\\b[a-zA-Z_][a-zA-Z0-9_]*)(\\.[a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*\\()",
-		"captures": {
-		  "1": {
-			"name": "entity.name.namespace"
-		  },
-		  "2": {
-			"name": "meta.function-call.generic.python"
-		  }
-		}
-	  },
-	  {
-		"match": "(?<!\\bself\\.)\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?==)",
-		"captures": {
-		  "1": {
-			"name": "variable.parameter.function-call.python"
-		  }
-		}
-	  }
-	]
-  }
+  "name": "Python Custom Injection",
+  "scopeName": "python.customInjection",
+  "injectionSelector": "L:meta.embedded.block.python - comment.line.number-sign.python, L:markup.fenced_code.block.markdown - comment.line.number-sign.python - meta.embedded.block.r",
+  "patterns": [
+    {
+      "match": "(?<=\\bfrom\\s)([a-zA-Z_][a-zA-Z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z0-9_]*)*)(?=\\s+import\\b)",
+      "name": "entity.name.namespace"
+    },
+    {
+      "match": "(?<=\\bimport\\s)([a-zA-Z_][a-zA-Z0-9_]*(?:\\.[a-zA-Z_][a-zA-Z0-9_]*)*)(?=\\b)",
+      "name": "entity.name.namespace"
+    },
+    {
+      "match": "(?<=\\bas\\s)([a-zA-Z_][a-zA-Z0-9_]*)",
+      "name": "entity.name.namespace"
+    },
+    {
+      "match": "(\\b[a-zA-Z_][a-zA-Z0-9_]*)(\\.[a-zA-Z_][a-zA-Z0-9_]*)(?=\\s*\\()",
+      "captures": {
+        "1": {
+          "name": "entity.name.namespace"
+        },
+        "2": {
+          "name": "meta.function-call.generic.python"
+        }
+      }
+    },
+    {
+      "match": "(?<!\\bself\\.)\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?==)",
+      "captures": {
+        "1": {
+          "name": "variable.parameter.function-call.python"
+        }
+      }
+    }
+  ]
+}
