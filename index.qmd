@@ -10,7 +10,6 @@ execute:
 ---
 
 ```{r}
-#| tags: please
 #| eval: false
 # | label: Virtual environment setting
 pacman::p_load(reticulate, tidyverse, tidytext)

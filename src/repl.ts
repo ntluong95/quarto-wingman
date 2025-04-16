@@ -87,9 +87,15 @@ export function registerInlineRepl(context: vscode.ExtensionContext) {
     outputRange: vscode.Range,
     prefix: string
   ): string {
+    if (!response || typeof response !== 'string') {
+      console.warn('[REPL] Empty or invalid response passed to generateReplacement');
+      return prefix.trim() + '\n'; // Fallback
+    }
+
     let responseLines = response.split(/\r?\n/);
     if (responseLines[0] === '') responseLines.shift();
     if (responseLines[responseLines.length - 1] === '') responseLines.pop();
+
     const commentPrefix = prefix || '# ';
     const outputLines = responseLines.map(line =>
       commentPrefix + (line === '' ? '<BLANKLINE>' : line)
@@ -123,34 +129,91 @@ export function registerInlineRepl(context: vscode.ExtensionContext) {
     const { outputRange, commands, prefix } = res;
     const codeBlock = commands.join('\n');
 
-    if (!isRunningInPositron()) {
-      console.warn('[REPL] Skipping inline execution: not in Positron.');
-      isRunning.flag = false;
-      return;
+    if (isRunningInPositron()) {
+      let positron: any;
+      try {
+        positron = require('positron');
+      } catch (err) {
+        console.warn('[REPL] Positron not available.');
+        isRunning.flag = false;
+        return;
+      }
+
+      try {
+        const result = await positron.runtime.executeCode(
+          lang,
+          codeBlock,
+          false,
+          undefined,
+          positron.RuntimeCodeExecutionMode.Interactive
+        );
+
+        if (!result || typeof result.output !== 'string') {
+          console.error('[REPL] Positron returned invalid output:', result);
+          isRunning.flag = false;
+          return;
+        }
+
+        const replacement = generateReplacement(result.output, outputRange, prefix);
+        await editor.edit(e => e.replace(outputRange, replacement));
+        isRunning.flag = false;
+        return;
+      } catch (e) {
+        console.error('[REPL] Positron execution failed:', e);
+      }
     }
 
-    let positron: any;
+    // ✅ FALLBACK TO TERMINAL
     try {
-      positron = require('positron');
-    } catch (err) {
-      console.warn('[REPL] Positron not available.');
-      isRunning.flag = false;
-      return;
-    }
-
-    try {
-      const result = await positron.runtime.executeCode(
-        lang,
-        codeBlock,
-        false,
-        undefined,
-        positron.RuntimeCodeExecutionMode.Interactive
-      );
-
-      const replacement = generateReplacement(result.output, outputRange, prefix);
-      await editor.edit(e => e.replace(outputRange, replacement));
-    } catch (e) {
-      console.error('[REPL] Positron execution failed:', e);
+      const sendCodeToTerminal = (terminal: vscode.Terminal, lines: string[]) => {
+        lines.forEach(line => terminal.sendText(line, true));
+      };
+    
+      const codeLines = codeBlock.split(/\r?\n/);
+    
+      if (lang === 'r') {
+        let rTerm = vscode.window.terminals.find(t => t.name.toLowerCase().includes('r'));
+    
+        if (rTerm) {
+          rTerm.show();
+          sendCodeToTerminal(rTerm, codeLines);
+        } else {
+          vscode.commands.executeCommand('r.createRTerm');
+          // Wait a bit for terminal to start
+          setTimeout(() => {
+            const newRTerm = vscode.window.terminals.find(t => t.name.toLowerCase().includes('r'));
+            if (newRTerm) {
+              newRTerm.show();
+              sendCodeToTerminal(newRTerm, codeLines);
+            } else {
+              vscode.window.showErrorMessage('[REPL] R terminal was not created.');
+            }
+          }, 1000);
+        }
+      } else if (lang === 'python') {
+        let pyTerm = vscode.window.terminals.find(t => t.name.toLowerCase().includes('python'));
+    
+        if (pyTerm) {
+          pyTerm.show();
+          sendCodeToTerminal(pyTerm, codeLines);
+        } else {
+          const newTerm = vscode.window.createTerminal({ name: 'Python REPL' });
+          newTerm.show();
+          newTerm.sendText('python', true);
+          setTimeout(() => {
+            sendCodeToTerminal(newTerm, codeLines);
+          }, 1000); // Give time for Python REPL to start
+        }
+      } else {
+        // Fallback: send to default terminal
+        const generic = vscode.window.createTerminal("Inline REPL");
+        generic.show();
+        sendCodeToTerminal(generic, codeLines);
+      }
+    
+      // vscode.window.showInformationMessage(`[REPL] Code sent to terminal.`);
+    } catch (termErr) {
+      console.error('[REPL] Failed to send code to terminal:', termErr);
     } finally {
       isRunning.flag = false;
     }
