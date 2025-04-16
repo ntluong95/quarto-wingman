@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2021",
+    "module": "Node16",
+    "lib": ["ES2021"],
+    "useDefineForClassFields": false,
+    "strict": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "positron": ["./positron-dts/positron.d.ts"]
+    },
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "include": ["positron-dts"]
+}

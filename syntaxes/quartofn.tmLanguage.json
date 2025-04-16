@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Quarto Footnotes",
+  "scopeName": "text.html.quarto.quartofn",
+  "injectionSelector": "L:text.html.quarto",
+  "patterns": [
+    { "include": "#inlineFootnotes" },
+    { "include": "#footnoteReferences" },
+    { "include": "#footnoteDefinitions" }
+  ],
+  "repository": {
+    "inlineFootnotes": {
+      "patterns": [
+        {
+          "name": "meta.footnote.inline.quarto",
+          "match": "\\^\\[.*?\\]"
+        }
+      ]
+    },
+    "footnoteReferences": {
+      "patterns": [
+        {
+          "name": "meta.footnote.reference.quarto",
+          "match": "\\[\\^[a-zA-Z0-9_-]+\\]"
+        }
+      ]
+    },
+    "footnoteDefinitions": {
+      "patterns": [
+        {
+          "name": "meta.footnote.definition.quarto",
+          "match": "^\\[\\^[a-zA-Z0-9_-]+\\]:"
+        }
+      ]
+    }
+  }
+}

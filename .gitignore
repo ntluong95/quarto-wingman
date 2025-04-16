@@ -1,3 +1,8 @@
 out
 node_modules
 *.log
+*.vsix
+.qodo
+index.qmd
+*.vsix
+dist
