@@ -2,16 +2,16 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ntluong95/quarto-wingsman.git"
+    "url": "https://github.com/ntluong95/quarto-wingman.git"
   },
   "icon": "resources/icon.png",
   "bugs": {
-    "url": "https://github.com/ntluong95/quarto-wingsman/issues"
+    "url": "https://github.com/ntluong95/quarto-wingman/issues"
   },
   "engines": {
     "vscode": "^1.96.0"
@@ -33,7 +33,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "quarto-wingsman.quickConfigureChunk",
+        "command": "quarto-wingman.configureCellOptions",
         "title": "Configure Code Cell Options"
       }
     ],

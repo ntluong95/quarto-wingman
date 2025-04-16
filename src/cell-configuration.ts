@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { cellOptions } from "./cellOptions";
 
 export class ConfigureCellOptionsCommand {
-  public static readonly id = "quarto-wingsman.configureCellOptions";
+  public static readonly id = "quarto-wingman.configureCellOptions";
 
   public async execute(line: number): Promise<void> {
     const editor = vscode.window.activeTextEditor;

@@ -4,3 +4,7 @@ node_modules
 *.vsix
 surveydown/
 .qodo
+index.qmd
+test.py
+test.r
+*.vsix
