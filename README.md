@@ -25,7 +25,7 @@
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/footnote.png)
 
-- Add a `Run Inline Code` button to `.r` and `.py` script that allows user to run code in comment. It is useful for data exploration task where you want to keep the experiment code in your script without interfere the entire workflow. 
+- Add a `Run Inline Code` button to `.r` and `.py` script that allows user to run code in comment. It is useful for data exploration task where you want to keep the experiment code in your script without interfere the entire workflow. For now the feature only works in Positron.
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/inline-code.png)
 
@@ -39,6 +39,7 @@ Licensed under the [MIT License](./LICENSE)
 ## 💡 Future Ideas
 
 - [ ] Snippets for different type of Quarto project
+- [ ] Add support for Run Inline Code for VSCode users
 
 
 ## 🧠 Why Positron?

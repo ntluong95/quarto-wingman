@@ -6,5 +6,7 @@ data <- data.frame(
 )
 
 # >>> mean(data$age)
+# Executed via Terminal
+#
 
 # >>> mean(data$height)

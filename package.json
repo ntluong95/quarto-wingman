@@ -35,6 +35,10 @@
       {
         "command": "quarto-wingman.configureCellOptions",
         "title": "Quarto Wingman: Cell Options"
+      },
+      {
+        "command": "inline-repl.run",
+        "title": "Run Inline Code"
       }
     ],
     "grammars": [

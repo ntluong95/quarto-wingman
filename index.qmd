@@ -10,12 +10,15 @@ execute:
 ---
 
 ```{r}
+#| tags: please
+#| eval: false
 # | label: Virtual environment setting
 pacman::p_load(reticulate, tidyverse, tidytext)
 use_virtualenv("../.venv", required = TRUE)
 ```
 
 ```{python}
+# | layout-ncol: 2
 # | eval: true
 # | output: false
 # | label: Import package and data
@@ -55,6 +58,8 @@ This paragraph won't be part of the note, because it
 isn't indented.
 
 ```{python}
+#| tbl-cap: any caption is fine
+#| fig-cap: hello
 #| echo: false
 
 
