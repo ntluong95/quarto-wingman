@@ -11,6 +11,8 @@
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/quarto3.png)
 
+![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/quarto4.png)
+
 
 - Improving syntax highlighting for Python code in `.qmd` document. This function is useful when Pylance is not available. You can use `Developer: Inspect Editor Tokens and Scopes` to inspect which are available token: 
   - Module keywords: Identify module name and module alias (like import `numpy` as `np`).
