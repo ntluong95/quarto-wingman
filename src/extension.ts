@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { wingsmanCodeLensProvider } from './codelens';
+import { wingmanCodeLensProvider } from './codelens';
 import { registerCellOptionsCommands } from './cell-configuration';
 import { registerInlineRepl } from './repl';
 import { registerCellOptionHoverProvider } from './hoverProvider';
@@ -10,7 +10,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register the CodeLens provider for Quarto documents.
   context.subscriptions.push(
-    vscode.languages.registerCodeLensProvider({ language: "quarto" }, wingsmanCodeLensProvider())
+    vscode.languages.registerCodeLensProvider({ language: "quarto" }, wingmanCodeLensProvider())
   );
 
   // Register the hover provider for cell options.

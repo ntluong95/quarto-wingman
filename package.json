@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -34,7 +34,7 @@
     "commands": [
       {
         "command": "quarto-wingman.configureCellOptions",
-        "title": "Configure Code Cell Options"
+        "title": "Quarto Wingman: Cell Options"
       }
     ],
     "grammars": [
@@ -58,7 +58,7 @@
     ],
     "languages": [
       {
-        "id": "text.html.quarto",
+        "id": "quarto",
         "aliases": [
           "Quarto"
         ],
@@ -111,7 +111,6 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "markdown-it": "^14.1.0",
-    "p-queue": "^8.1.0"
+    "markdown-it": "^14.1.0"
   }
 }

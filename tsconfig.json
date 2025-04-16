@@ -9,8 +9,8 @@
     "baseUrl": ".",
     "paths": {
       "positron": ["./positron-dts/positron.d.ts"]
-    },
-    "typeRoots": ["./node_modules/@types"]
+    }
+    // "typeRoots": ["./node_modules/@types"]
   },
   "include": ["positron-dts"]
 }

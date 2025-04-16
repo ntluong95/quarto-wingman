@@ -9,16 +9,6 @@ execute:
     echo: false
 ---
 
-
-
-
-
-```{r}
-#| eval: false
-#| echo: false
-
-```
-
 ```{r}
 # | label: Virtual environment setting
 pacman::p_load(reticulate, tidyverse, tidytext)
@@ -65,6 +55,7 @@ This paragraph won't be part of the note, because it
 isn't indented.
 
 ```{python}
+#| echo: false
 
 
 ```
