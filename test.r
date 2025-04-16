@@ -1,6 +1,10 @@
-# >>> foo <- 10 * 10
-# >>> bar <- 20 + 30
+# Fake dataset
+data <- data.frame(
+  age = c(25, 30, 35, 40, 45),
+  gender = c("male", "female", "male", "female", "male"),
+  height = c(180, 170, 165, 175, 190)
+)
 
-# >>> foo + bar
+# >>> mean(data$age)
 
-# >>> mean(c(1, 2, 3))
+# >>> mean(data$height)

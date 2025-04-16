@@ -2,9 +2,7 @@ out
 node_modules
 *.log
 *.vsix
-surveydown/
 .qodo
 index.qmd
-test.py
-test.r
 *.vsix
+dist
