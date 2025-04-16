@@ -10,6 +10,8 @@ execute:
 ---
 
 ```{r}
+#| eval: false
+
 #| echo: false
 
 ```
