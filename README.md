@@ -29,6 +29,10 @@ Run inline code in R and Python: Useful when something just for printing or test
 foo = 10 * 10
 bar = 20 + 30
 
+Data Science snippets (snippets folder - python code)
+
+#TODO Snippets for YAML heading, different type of project, create a template
+
 # >>> foo + bar
   
 
@@ -64,6 +68,7 @@ text.html.quarto.quartofn
 ```bash
 npx vsce package
 ```
+
 
 ## Contributing
 Contributions, bug reports, and feature requests are welcome!

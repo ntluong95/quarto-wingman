@@ -9,7 +9,10 @@ execute:
     echo: false
 ---
 
+```{r}
+#| echo: false
 
+```
 
 ```{r}
 # | label: Virtual environment setting
@@ -55,6 +58,13 @@ belong to the previous footnote.
 
 This paragraph won't be part of the note, because it
 isn't indented.
+
+```{python}
+
+
+```
+
+
 
 ^[I am a footnote]
 
@@ -108,7 +118,10 @@ final_data = final_data.assign(
 del cmi_raw, sdi_raw, fsi_raw, pop_raw
 ```
 
+
+
 ```{python}
+
 class PromptDesigner:
     def __init__(self):
         # Store different parts of the prompt as class attributes

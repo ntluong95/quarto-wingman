@@ -4,48 +4,54 @@
 
 const path = require("path");
 
-//@ts-check
-/** @typedef {import('webpack').Configuration} WebpackConfig **/
-
-/** @type WebpackConfig */
+/** @type {import('webpack').Configuration} */
 const extensionConfig = {
-  target: "node", // VS Code extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
-  mode: "none", // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
+  target: "node",
+  mode: "production", // 'production' for packaging
 
-  entry: "./src/extension.ts", // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
+  entry: "./src/extension.ts",
   output: {
-    // the bundle is stored in the 'dist' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
     path: path.resolve(__dirname, "dist"),
     filename: "extension.js",
     libraryTarget: "commonjs2",
   },
+
+  // Avoid bundling modules we can't package (vscode, native, optional, etc.)
   externals: {
-    vscode: "commonjs vscode", // the vscode-module is created on-the-fly and must be excluded. Add other modules that cannot be webpack'ed, 📖 -> https://webpack.js.org/configuration/externals/
+    vscode: "commonjs vscode",
     positron: "commonjs positron",
-    // modules added here also need to be added in the .vscodeignore file
+    bufferutil: "commonjs bufferutil",
+    "utf-8-validate": "commonjs utf-8-validate",
   },
+
   resolve: {
-    alias: {
-      positron: path.resolve(__dirname, "positron-dts/positron.d.ts"), // Add the alias here
-    },
     extensions: [".ts", ".js"],
+
+    // Allow imports from sibling apps/packages (monorepo-aware)
+    modules: [
+      path.resolve(__dirname, "src"),
+      path.resolve(__dirname, "../../"), // access apps/vscode, packages/*
+      "node_modules",
+    ],
   },
+
   module: {
     rules: [
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: "ts-loader",
-          },
-        ],
+        use: {
+          loader: "ts-loader",
+        },
       },
     ],
   },
-  devtool: "nosources-source-map",
+
+  devtool: "hidden-source-map",
+
   infrastructureLogging: {
-    level: "log", // enables logging required for problem matchers
+    level: "log",
   },
 };
+
 module.exports = [extensionConfig];
