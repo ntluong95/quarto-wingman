@@ -38,5 +38,5 @@ Licensed under the [MIT License](./LICENSE)
 
 ## 💡 Future Ideas
 
-- [ ] Snippets for different type of Quarto project
+- [ ] Snippets for different type of Quarto project (book, website, manuscript) and common format (html, pdf, word, tysp, presentation, dashboard)
 
