@@ -2,20 +2,20 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/ntluong95/quarto-wingman.git"
   },
-  "icon": "resources/icon.png",
   "bugs": {
     "url": "https://github.com/ntluong95/quarto-wingman/issues"
   },
   "engines": {
     "vscode": "^1.96.0"
   },
+  "icon": "resources/icon.png",
   "categories": [
     "Programming Languages"
   ],
