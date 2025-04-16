@@ -1,6 +1,6 @@
 # Quarto Wingman
 
-**Quarto Wingman** is a Positron extension designed to enhance the editing experience for Quarto documents and scripts. It provides interactive code cell configuration based on Quarto documentation, improved syntax highlighting for Python code (particularly when Pylance is not available), and intelligent token recognition for module imports, function calls, and variable declarations. Additionally, it enhances footnote display in documents and offers an inline code runner for R and Python scripts, making it especially useful for data exploration. Developed with modern data science workflows in mind, Quarto Wingman brings a streamlined, polyglot data science IDE experience to Positron users.
+**Quarto Wingman** is a Positron/VSCode (and all CodeOSS alike) extension designed to enhance the editing experience for Quarto documents and scripts. It provides interactive code cell configuration based on Quarto documentation, improved syntax highlighting for Python code (particularly when Pylance is not available), and intelligent token recognition for module imports, function calls, and variable declarations. Additionally, it enhances footnote display in documents and offers an inline code runner for R and Python scripts, making it especially useful for data exploration. Developed with modern data science workflows in mind, Quarto Wingman brings a streamlined, polyglot data science IDE experience to users.
 
 ## Features
 - Provide code cell options for quarto document. The documentation was refered from [Quarto Homepage](https://quarto.org/docs/reference/cells/cells-knitr.html)
@@ -25,7 +25,7 @@
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/footnote.png)
 
-- Add a `Run Inline Code` button to `.r` and `.py` script that allows user to run code in comment. It is useful for data exploration task where you want to keep the experiment code in your script without interfere the entire workflow. For now the feature only works in Positron.
+- Add a `Run Inline Code` button to `.r` and `.py` script that allows user to run code in comment. It is useful for data exploration task where you want to keep the experiment code in your script without interfere the entire workflow.
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/inline-code.png)
 
@@ -39,9 +39,4 @@ Licensed under the [MIT License](./LICENSE)
 ## 💡 Future Ideas
 
 - [ ] Snippets for different type of Quarto project
-- [ ] Add support for Run Inline Code for VSCode users
 
-
-## 🧠 Why Positron?
-
-Because it’s time for a modern, polyglot, VS Code-based Data Science IDE — and this extension brings one of RStudio's most beloved panels to the future.

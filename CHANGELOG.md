@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.5
+- Fix problem when running inline code for VSCode user
+
 ## 0.0.4
 - Update new logo
 
