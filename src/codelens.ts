@@ -65,7 +65,7 @@ export function wingsmanCodeLensProvider(): vscode.CodeLensProvider {
           new vscode.CodeLens(range, {
             title: "$(settings-gear) Cell Options",
             tooltip: "Add or edit code cell options",
-            command: "quarto-wingsman.configureCellOptions",
+            command: "quarto-wingman.configureCellOptions",
             arguments: [line],
           })
         );
