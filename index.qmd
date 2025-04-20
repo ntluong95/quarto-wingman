@@ -7,7 +7,10 @@ format:
       theme: styles.scss
 execute: 
     echo: false
+bibliography: references.bib
 ---
+
+https://github.com/quarto-dev/quarto/pull/698
 
 ```{r}
 #| eval: false
@@ -38,37 +41,27 @@ fsi_raw = pd.read_csv("data/food_supply.csv")
 pop_raw = pd.read_csv("data/population.csv")
 ```
 
-Here is a footnote reference,[^1] and another.[^longnote]
+Here is a footnote reference,[^1] and another.[^2]
 
 [^1]: Here is the footnote.
 
-[^longnote]: Here's one with multiple blocks.
+[^2]: Here's one with multiple blocks.
 
-    Subsequent paragraphs are indented to show that they
-belong to the previous footnote.
+    Subsequent paragraphs are indented to show that they belong to the previous footnote.
 
-        { some.code }
+    ```         
+    { some.code }
+    ```
 
-    The whole paragraph can be indented, or just the first
-    line.  In this way, multi-paragraph footnotes work like
-    multi-paragraph list items.
+    The whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.
 
-This paragraph won't be part of the note, because it
-isn't indented.
+This paragraph won't be part of the note, because it isn't indented.
 
+[^3]
 
+[^3]: I am a footnote
 
-```{python}
-#| tbl-cap: any caption is fine
-#| fig-cap: hello
-#| echo: false
-
-
-```
-
-
-
-^[I am a footnote]
+[@ahmadEnvironmentalAntimicrobialResistance2021; @allelGlobalAntimicrobialresistanceDrivers2023a; @myattReviewMethodsDetect2006]
 
 ```{python}
 # | eval: true
@@ -119,8 +112,6 @@ final_data = final_data.assign(
 
 del cmi_raw, sdi_raw, fsi_raw, pop_raw
 ```
-
-
 
 ```{python}
 
@@ -399,7 +390,6 @@ cmi_map = px.choropleth(
 )
 ```
 
-
 ```{python}
 # | eval: true
 # | output: false
@@ -555,30 +545,25 @@ sdi_change = df_2018[["country", "sdi"]].merge(df_1990[["country", "sdi"]], on="
 sdi_change["sdi_change_pct"] = ((sdi_change["sdi_2018"] - sdi_change["sdi_1990"]) / sdi_change["sdi_1990"]) * 100
 ```
 
-
 # Overview
 
-## Row 1 {height=20%}
+## Row 1 {height="20%"}
 
 ### Data Source
 
 This dashboard presents an analysis of global child mortality and the association with food security and sustainable development index from 1990 to 2020, focusing on three key metrics:
 
-1. **The Sustainable Development Index**: is an efficiency metric, designed to assess the ecological efficiency of nations in delivering human development. It is calculated as the quotient of two figures: (1) a “development index” based on the Human Development Index, calculated as the geometric mean of the life expectancy index, the education index, and a modified income index; and (2) an “ecological impact index” calculated as the extent to which consumption-based CO2 emissions and material footprint exceed per-capita shares of planetary boundaries.
+1.  **The Sustainable Development Index**: is an efficiency metric, designed to assess the ecological efficiency of nations in delivering human development. It is calculated as the quotient of two figures: (1) a “development index” based on the Human Development Index, calculated as the geometric mean of the life expectancy index, the education index, and a modified income index; and (2) an “ecological impact index” calculated as the extent to which consumption-based CO2 emissions and material footprint exceed per-capita shares of planetary boundaries.
 
-2. **Child mortality (0-5 year-olds dying per 1000 born)**: Death of children under five years of age per 1,000 live births
+2.  **Child mortality (0-5 year-olds dying per 1000 born)**: Death of children under five years of age per 1,000 live births
 
-3. **Food supply (kilocalories / person & day)**: Calories measures the energy content of the food. The required intake varies, but it is normally in the range of 1500-3000 kilocalories per day. One banana contains approximatly 100 kilocalories.
+3.  **Food supply (kilocalories / person & day)**: Calories measures the energy content of the food. The required intake varies, but it is normally in the range of 1500-3000 kilocalories per day. One banana contains approximatly 100 kilocalories.
 
 The data is sourced from Gapminder's global development indicators database, which compiles information from various international organizations including WHO, World Bank, and UN agencies.
 
-The dashboard is designed to **highlight**:
-    - Global trends difference in Child mortality
-    - Global trends difference in The Sustainable Development Index
-    - Global trends difference in The Food supply index
-    - The association among indicators
+The dashboard is designed to **highlight**: - Global trends difference in Child mortality - Global trends difference in The Sustainable Development Index - Global trends difference in The Food supply index - The association among indicators
 
-## Row 2 {height=40%}
+## Row 2 {height="40%"}
 
 ```{python}
 # | title: Global trend of Sustainable Development Index (1990-2020)
@@ -595,7 +580,7 @@ fsi_map
 cmi_map
 ```
 
-## Row 3 {height=40%}
+## Row 3 {height="40%"}
 
 ```{python}
 # | title: Relationship between SDI and Child Mortality Over Time (sized by Food Supply)
@@ -607,22 +592,19 @@ animated_scatter
 time_series_plot
 ```
 
-
 ### Key Insights
 
 **Key Insights**
 
-1. **Global Child Mortality (cmi) (1990–2020)**:
-   - Marked Decline: Global child mortality rates have dropped significantly
-   - In endline (2020): Some African nations still exhibit relatively high cmi, underscoring the need for continued investment in maternal and child health
-
-2. **Global Sustainable Development Index (SDI) (1990–2020)**:
-   - Overall Improvement: Many countries have gradually improved their SDI, indicating better human development outcomes achieved with fewer ecological impacts.
-   - Regional Variations: Developed regions typically rank higher, while some developing nations show a steady but slower rise, reflecting uneven global progress.
-
-4. **Global Food Security Index (FSI) (1990–2020)**:
-   - Increasing Caloric Availability: Most regions show a general increase in FSI, indicating that food supply per capita has improved worldwide.
-   - Persistent Gaps: Despite overall progress, certain areas still face undernourishment challenges.
+1.  **Global Child Mortality (cmi) (1990–2020)**:
+    -   Marked Decline: Global child mortality rates have dropped significantly
+    -   In endline (2020): Some African nations still exhibit relatively high cmi, underscoring the need for continued investment in maternal and child health
+2.  **Global Sustainable Development Index (SDI) (1990–2020)**:
+    -   Overall Improvement: Many countries have gradually improved their SDI, indicating better human development outcomes achieved with fewer ecological impacts.
+    -   Regional Variations: Developed regions typically rank higher, while some developing nations show a steady but slower rise, reflecting uneven global progress.
+3.  **Global Food Security Index (FSI) (1990–2020)**:
+    -   Increasing Caloric Availability: Most regions show a general increase in FSI, indicating that food supply per capita has improved worldwide.
+    -   Persistent Gaps: Despite overall progress, certain areas still face undernourishment challenges.
 
 # Child Mortality by Region
 
