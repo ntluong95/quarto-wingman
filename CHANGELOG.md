@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.6
+- Cite reference directly from a Zotero runtime and update the `*.bib` file. Default is to the `*.bib` file relative to the workspace root. Command `Quarto Wingman: Select citation from Zotero`
+
 ## 0.0.5
 - Fix problem when running inline code for VSCode user
 

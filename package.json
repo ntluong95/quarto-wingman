@@ -50,6 +50,31 @@
           "type": "string",
           "default": "references.bib",
           "description": "Path (relative to workspace root) of the .bib file to which to append exported entries"
+        },
+        "zoteroForQuarto.zoteroApi": {
+          "type": "object",
+          "description": "Zotero Web API settings for fallback exports",
+          "properties": {
+            "libraryType": {
+              "type": "string",
+              "enum": [
+                "user",
+                "group"
+              ],
+              "default": "user",
+              "description": "Whether you’re using a personal user library or a group library"
+            },
+            "libraryID": {
+              "type": "string",
+              "default": "",
+              "description": "Your Zotero user ID (or group ID) from the API URL"
+            },
+            "apiKey": {
+              "type": "string",
+              "default": "",
+              "description": "Your Zotero Web API key (needed for private libraries)"
+            }
+          }
         }
       }
     },

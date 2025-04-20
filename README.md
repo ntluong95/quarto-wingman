@@ -21,7 +21,7 @@
 
   - Variable Declaration Highlighting: Variable declarations are detected by matching identifiers followed by an equals sign, while avoiding matches when they are part of object attribute assignments.
 
-- Cite reference directly from a Zotero runtime and update the `*.bib` file.Default is to the `*.bib` file relative to the workspace root.
+- Cite reference directly from a Zotero runtime and update the `*.bib` file.Default is to the `*.bib` file relative to the workspace root. Command `Quarto Wingman: Select citation from Zotero`.
 
 - Highlighting footnote, both in-line footnote and block footnote references or definitions (e.g., [^1]: Note content or [^1] references). Three new token are introduced including `meta.footnote.inline.quarto`, `meta.footnote.reference.quarto`, `meta.footnote.definition.quarto`
 

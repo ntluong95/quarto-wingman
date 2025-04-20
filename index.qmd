@@ -61,8 +61,6 @@ This paragraph won't be part of the note, because it isn't indented.
 
 [^3]: I am a footnote
 
-[@ahmadEnvironmentalAntimicrobialResistance2021; @allelGlobalAntimicrobialresistanceDrivers2023a; @myattReviewMethodsDetect2006]
-
 ```{python}
 # | eval: true
 # | output: false
