@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -90,8 +90,26 @@
       {
         "command": "zoteroForQuarto.pickCitation",
         "title": "Quarto Wingman: Select citation from Zotero"
+      },
+      {
+        "command": "zoteroForQuarto.pickCitation.ui",
+        "title": "Zotero",
+        "icon": "$(group-by-ref-type)",
+        "actionBarOptions": {
+          "controlType": "button",
+          "displayTitle": true
+        }
       }
     ],
+    "menus": {
+      "editor/actions/right": [
+        {
+          "command": "zoteroForQuarto.pickCitation.ui",
+          "when": "editorLangId == markdown || editorLangId == quarto",
+          "group": "navigation@100"
+        }
+      ]
+    },
     "grammars": [
       {
         "scopeName": "python.customInjection",

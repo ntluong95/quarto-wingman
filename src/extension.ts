@@ -29,6 +29,12 @@ export async function activate(context: vscode.ExtensionContext) {
       insertCitation
     )
   );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("zoteroForQuarto.pickCitation.ui", () =>
+      vscode.commands.executeCommand("zoteroForQuarto.pickCitation")
+    )
+  );
 }
 
 export function deactivate() {}

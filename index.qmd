@@ -55,11 +55,29 @@ Here is a footnote reference,[^1] and another.[^2]
 
     The whole paragraph can be indented, or just the first line. In this way, multi-paragraph footnotes work like multi-paragraph list items.
 
-This paragraph won't be part of the note, because it isn't indented.
+This paragraph won't be part of the note, because it isn't indented. 
 
 [^3]
 
-[^3]: I am a footnote
+[^3]: I am a footnote 
+
+
+
+::: {.class}
+
+:::
+
+should be matched, similiarly to HTML tag, https://github.com/jzmstrjp/vscode-color-the-tag-name
+
+::: {.columns}
+::: {.column width=50%}
+
+:::
+::: {.column width=50%}
+
+:::
+:::
+
 
 ```{python}
 # | eval: true
