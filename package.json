@@ -101,6 +101,10 @@
           "controlType": "button",
           "displayTitle": true
         }
+      },
+      {
+        "command": "quarto-wingman.insertCodeChunk",
+        "title": "Quarto Wingman: Insert Code Chunk"
       }
     ],
     "semanticTokenScopes": [
@@ -126,6 +130,23 @@
       ]
     },
 
+    "keybindings": [
+      {
+        "command": "quarto-wingman.insertCodeChunk",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorTextFocus && !findInputFocussed && !replaceInputFocussed && editorLangId == 'quarto'"
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "text.html.quarto.quartofn",
+        "path": "./syntaxes/quartofn.tmLanguage.json",
+        "injectTo": [
+          "text.html.quarto"
+        ]
+      }
+    ],
     "languages": [
       {
         "id": "quarto",

@@ -4,6 +4,7 @@ import { registerCellOptionsCommands } from "./cell-configuration";
 import { registerInlineRepl } from "./repl";
 import { registerCellOptionHoverProvider } from "./hoverProvider";
 import { insertCitation } from "./zotero";
+import { insertCodeChunk } from "./insert";
 
 export async function activate(context: vscode.ExtensionContext) {
   // Register the command for configuring cell options.
@@ -34,6 +35,10 @@ export async function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("zoteroForQuarto.pickCitation.ui", () =>
       vscode.commands.executeCommand("zoteroForQuarto.pickCitation")
     )
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("quarto-wingman.insertCodeChunk", insertCodeChunk)
   );
 }
 
