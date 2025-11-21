@@ -22,7 +22,9 @@
   "keywords": [
     "python",
     "r",
-    "quarto"
+    "quarto",
+    "zotero",
+    "data science"
   ],
   "activationEvents": [
     "onLanguage:python",
@@ -105,6 +107,19 @@
         "title": "Quarto Wingman: Insert Code Chunk"
       }
     ],
+    "semanticTokenScopes": [
+      {
+        "language": "quarto",
+        "scopes": {
+          "module": [
+            "support.module.python"
+          ],
+          "class": [
+            "entity.name.class.python"
+          ]
+        }
+      }
+    ],
     "menus": {
       "editor/actions/right": [
         {
@@ -114,6 +129,7 @@
         }
       ]
     },
+
     "keybindings": [
       {
         "command": "quarto-wingman.insertCodeChunk",
@@ -181,11 +197,14 @@
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
+
     "vscode-test": "^1.3.0",
     "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "markdown-it": "^14.1.0"
+    "just-debounce": "^1.1.0",
+    "markdown-it": "^14.1.0",
+    "vscode-jsonrpc": "^8.2.1"
   }
 }
