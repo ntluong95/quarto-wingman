@@ -99,6 +99,10 @@
           "controlType": "button",
           "displayTitle": true
         }
+      },
+      {
+        "command": "quarto-wingman.insertCodeChunk",
+        "title": "Quarto Wingman: Insert Code Chunk"
       }
     ],
     "menus": {

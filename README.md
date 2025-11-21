@@ -25,6 +25,10 @@
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/inline-code.png)
 
 
+- Provide a `Insert Code Chunk` command that allows user to insert a code chunk with a language of their choice.
+
+![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/insert-code.png)
+
 ## 🙏 Attribution
 
 Created by [ntluong95](https://github.com/ntluong95)  

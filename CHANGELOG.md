@@ -2,6 +2,7 @@
 
 ## 0.0.8
 - Remove semantic highlighting as Quarto extension already provide it
+- Add a `Insert Code Chunk` command that allows user to insert a code chunk with a language of their choice.
 
 ## 0.0.7
 - Add a button to cite document from a runtime Zotero
