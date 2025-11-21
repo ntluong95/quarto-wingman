@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.8
+- Remove semantic highlighting as Quarto extension already provide it
+
 ## 0.0.7
 - Add a button to cite document from a runtime Zotero
 

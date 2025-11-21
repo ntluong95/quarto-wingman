@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -13,9 +13,9 @@
     "url": "https://github.com/ntluong95/quarto-wingman/issues"
   },
   "engines": {
-    "vscode": "^1.96.0"
+    "vscode": "^1.99.0"
   },
-  "icon": "resources/icon.png",
+  "icon": "resources/icon-resize.png",
   "categories": [
     "Programming Languages"
   ],
@@ -111,16 +111,6 @@
       ]
     },
     "grammars": [
-      {
-        "scopeName": "python.customInjection",
-        "path": "./syntaxes/python-custom-injection.json",
-        "injectTo": [
-          "meta.embedded.block.python",
-          "markup.fenced_code.block.markdown",
-          "text.html.quarto",
-          "text.html.markdown"
-        ]
-      },
       {
         "scopeName": "text.html.quarto.quartofn",
         "path": "./syntaxes/quartofn.tmLanguage.json",
