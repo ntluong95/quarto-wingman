@@ -114,6 +114,14 @@
         }
       ]
     },
+    "keybindings": [
+      {
+        "command": "quarto-wingman.insertCodeChunk",
+        "key": "ctrl+shift+i",
+        "mac": "cmd+shift+i",
+        "when": "editorTextFocus && !findInputFocussed && !replaceInputFocussed && editorLangId == 'quarto'"
+      }
+    ],
     "grammars": [
       {
         "scopeName": "text.html.quarto.quartofn",
