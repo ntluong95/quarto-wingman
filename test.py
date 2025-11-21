@@ -4,3 +4,4 @@ bar = 20 + 30
 # >>> foo + bar
 # Executed via Terminal
 #
+import pandas as pd

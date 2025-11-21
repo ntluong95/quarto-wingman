@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -101,6 +101,19 @@
         }
       }
     ],
+    "semanticTokenScopes": [
+      {
+        "language": "quarto",
+        "scopes": {
+          "module": [
+            "support.module.python"
+          ],
+          "class": [
+            "entity.name.class.python"
+          ]
+        }
+      }
+    ],
     "menus": {
       "editor/actions/right": [
         {
@@ -114,6 +127,16 @@
       {
         "scopeName": "python.customInjection",
         "path": "./syntaxes/python-custom-injection.json",
+        "injectTo": [
+          "meta.embedded.block.python",
+          "markup.fenced_code.block.markdown",
+          "text.html.quarto",
+          "text.html.markdown"
+        ]
+      },
+      {
+        "scopeName": "source.python.quarto.semantic",
+        "path": "./syntaxes/python.quarto.semantic.tmLanguage.json",
         "injectTo": [
           "meta.embedded.block.python",
           "markup.fenced_code.block.markdown",
@@ -179,11 +202,14 @@
     "ts-jest": "^29.1.2",
     "ts-loader": "^9.5.2",
     "typescript": "^5.7.3",
+    "vscode-languageclient": "^7.0.0",
     "vscode-test": "^1.3.0",
     "webpack": "^5.99.5",
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "markdown-it": "^14.1.0"
+    "just-debounce": "^1.1.0",
+    "markdown-it": "^14.1.0",
+    "vscode-jsonrpc": "^8.2.1"
   }
 }
