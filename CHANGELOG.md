@@ -1,5 +1,9 @@
 # Change Log
 
+
+## 0.0.8
+- Remove the semantic highlight for Python code in `.qmd` document
+
 ## 0.0.7
 - Add a button to cite document from a runtime Zotero
 
