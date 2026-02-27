@@ -5,6 +5,7 @@ import { registerInlineRepl } from "./repl";
 import { registerCellOptionHoverProvider } from "./hoverProvider";
 import { insertCitation } from "./zotero";
 import { insertCodeChunk } from "./insert";
+import { registerRunCurrentCompat } from "./runCurrentCompat";
 
 async function toggleQuartoEditorMode() {
   const activeTab = vscode.window.tabGroups.activeTabGroup.activeTab;
@@ -44,6 +45,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register inline REPL support.
   registerInlineRepl(context);
+
+  // Register Cmd/Ctrl+Enter compatibility execution for Julia cells.
+  registerRunCurrentCompat(context);
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
