@@ -108,6 +108,17 @@
         }
       },
       {
+        "command": "quarto-wingman.toggleEditorMode",
+        "title": "Mode",
+        "icon": "$(symbol-misc)",
+        "actionBarOptions": {
+          "controlType": "toggle",
+          "leftTitle": "Source",
+          "rightTitle": "Visual",
+          "toggled": "activeCustomEditorId == 'quarto.visualEditor'"
+        }
+      },
+      {
         "command": "quarto-wingman.insertCodeChunk",
         "title": "Quarto Wingman: Insert Code Chunk"
       }
@@ -126,6 +137,13 @@
       }
     ],
     "menus": {
+      "editor/actions/left": [
+        {
+          "command": "quarto-wingman.toggleEditorMode",
+          "when": "editorLangId == markdown || editorLangId == quarto || activeCustomEditorId == 'quarto.visualEditor'",
+          "group": "1_editor_mode"
+        }
+      ],
       "editor/actions/right": [
         {
           "command": "zoteroForQuarto.pickCitation.ui",
