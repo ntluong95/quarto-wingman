@@ -121,6 +121,10 @@
       {
         "command": "quarto-wingman.insertCodeChunk",
         "title": "Quarto Wingman: Insert Code Chunk"
+      },
+      {
+        "command": "quarto-wingman.runCurrentCompat",
+        "title": "Quarto Wingman: Run Current (Compat)"
       }
     ],
     "semanticTokenScopes": [
@@ -153,6 +157,18 @@
       ]
     },
     "keybindings": [
+      {
+        "command": "-quarto.runCurrent",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus && editorLangId == 'quarto' && !findInputFocussed && !replaceInputFocussed"
+      },
+      {
+        "command": "quarto-wingman.runCurrentCompat",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus && editorLangId == 'quarto' && !findInputFocussed && !replaceInputFocussed"
+      },
       {
         "command": "quarto-wingman.insertCodeChunk",
         "key": "ctrl+shift+i",
