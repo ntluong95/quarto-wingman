@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -242,6 +242,7 @@
   "dependencies": {
     "just-debounce": "^1.1.0",
     "markdown-it": "^14.1.0",
-    "vscode-jsonrpc": "^8.2.1"
+    "vscode-jsonrpc": "^8.2.1",
+    "yaml": "^2.9.0"
   }
 }

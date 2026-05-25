@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.1
+
+- Compare document YAML front matter against project `_quarto.yml`. Keys that duplicate a project setting are shown as faded hints (safe to remove); keys whose value differs from the project value are flagged as informational diagnostics indicating the document value will be applied. Fixes #5.
+
 ## 0.0.9
 
 - Fix issue related to Zotero citation does not work

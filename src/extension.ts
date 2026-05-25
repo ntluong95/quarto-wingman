@@ -6,6 +6,7 @@ import { registerCellOptionHoverProvider } from "./hoverProvider";
 import { insertCitation } from "./zotero";
 import { insertCodeChunk } from "./insert";
 import { registerRunCurrentCompat } from "./runCurrentCompat";
+import { registerProjectYamlDiagnostics } from "./projectYamlDiagnostics";
 
 async function toggleQuartoEditorMode() {
   const activeTab = vscode.window.tabGroups.activeTabGroup.activeTab;
@@ -48,6 +49,10 @@ export async function activate(context: vscode.ExtensionContext) {
 
   // Register Cmd/Ctrl+Enter compatibility execution for Julia cells.
   registerRunCurrentCompat(context);
+
+  // Compare document YAML front matter with project _quarto.yml and emit diagnostics
+  // for duplicated or overridden keys.
+  registerProjectYamlDiagnostics(context);
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
