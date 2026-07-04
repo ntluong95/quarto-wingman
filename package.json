@@ -2,7 +2,7 @@
   "name": "quarto-wingman",
   "displayName": "Quarto Wingman",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "ntluong95",
   "license": "MIT",
   "repository": {
@@ -226,7 +226,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mocha": "^7.0.2",
     "@types/node": "20.x",
-    "@types/vscode": "1.96.0",
+    "@types/vscode": "^1.99.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
@@ -242,6 +242,7 @@
   "dependencies": {
     "just-debounce": "^1.1.0",
     "markdown-it": "^14.1.0",
-    "vscode-jsonrpc": "^8.2.1"
+    "vscode-jsonrpc": "^8.2.1",
+    "yaml": "^2.9.0"
   }
 }

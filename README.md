@@ -28,6 +28,8 @@
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/inline-code.png)
 
+- Compare document YAML front matter against the project's `_quarto.yml` (Quarto resolves document metadata on top of project metadata — see https://quarto.org/docs/projects/quarto-projects.html#shared-metadata). Keys that exactly duplicate a project setting are faded as `Hint` diagnostics (safe to remove), and keys whose value differs are flagged as `Information` diagnostics showing both the project value and the document value that will be applied. The closest `_quarto.yml` (or `_quarto.yaml`) walking up from the document's folder is used.
+
 - Provide a `Insert Code Chunk` command that allows user to insert a code chunk with a language of their choice. Please remove default keybiding `quarto.insertCodeCell` from Quarto extension to make this feature works.
 
 ![](https://raw.githubusercontent.com/ntluong95/quarto-wingman/refs/heads/main/resources/insert-code.png)
