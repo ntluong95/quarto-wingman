@@ -226,7 +226,7 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mocha": "^7.0.2",
     "@types/node": "20.x",
-    "@types/vscode": "1.96.0",
+    "@types/vscode": "^1.99.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
