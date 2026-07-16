@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.2
+
+- Fix the "Cell Options" CodeLens not showing for cells that include a chunk label (e.g. ` ```{r label} `). Detection now matches the full braced info string and accepts any language name instead of a hard-coded list.
+
 ## 0.1.1
 
 - Compare document YAML front matter against project `_quarto.yml`. Keys that duplicate a project setting are shown as faded hints (safe to remove); keys whose value differs from the project value are flagged as informational diagnostics indicating the document value will be applied. Fixes #5.

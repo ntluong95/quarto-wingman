@@ -7,17 +7,23 @@ type Token = ReturnType<MarkdownIt["parse"]>[number];
 
 /**
  * Checks if a given token represents an executable code block.
- * Only tokens with an info string starting with a curly-brace (e.g. "{r}" or "{python}") are considered.
+ *
+ * Executable Quarto/knitr cells use a braced info string with a language
+ * identifier, optionally followed by a chunk label and/or options, e.g.
+ * "{r}", "{python}", "{r label}", "{python, echo=FALSE}" or "{ojs}".
+ * Any language name is accepted; the identifier must start with a letter
+ * (so pandoc class blocks like "{.python}" are ignored) and be followed by
+ * whitespace, a comma, or the closing brace.
  *
  * @param token A token produced by MarkdownIt.
  * @returns true if the token is an executable code cell.
  */
 function isExecutableBlock(token: Token): boolean {
   if (token.type !== "fence" || !token.info) return false;
-  const firstWord = token.info.trim().split(/\s+/)[0];
-  // Match only if the info string starts with an opening brace.
-  const regex = /^\{(r|python|julia|bash|sql)(?=[,\}\s])/;
-  return regex.test(firstWord);
+  // Match the full info string rather than just the first word, so cells
+  // with a chunk label such as "{r label}" are detected too.
+  const regex = /^\{\s*[A-Za-z][A-Za-z0-9_.+-]*(?=[\s,}])/;
+  return regex.test(token.info.trim());
 }
 
 /**
