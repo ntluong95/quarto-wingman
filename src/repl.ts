@@ -14,16 +14,19 @@ function isRunningInPositron(): boolean {
 }
 
 export function registerInlineRepl(context: vscode.ExtensionContext) {
+  // Show the inline REPL CodeLens in every file type / language, not just
+  // Python and R. The CodeLens only appears where a `# >>>` block exists, so
+  // this stays unobtrusive in files that don't contain inline REPL blocks.
   const selector: vscode.DocumentSelector = [
-    { language: 'python', scheme: 'file' },
-    { language: 'r', scheme: 'file' }
+    { scheme: 'file' },
+    { scheme: 'untitled' }
   ];
 
-  function detectLanguage(document: vscode.TextDocument): 'python' | 'r' | null {
-    const langId = document.languageId;
-    if (langId === 'python') return 'python';
-    if (langId === 'r') return 'r';
-    return null;
+  // The language used to route execution is simply the document's language id.
+  // In Positron this is passed straight to the matching runtime; languages
+  // without a runtime fall back to a terminal.
+  function detectLanguage(document: vscode.TextDocument): string {
+    return document.languageId;
   }
 
   function parseReplBlockAt(
@@ -82,6 +85,31 @@ export function registerInlineRepl(context: vscode.ExtensionContext) {
     return [lineNum, { headerRange, outputRange, commands, prefix }];
   }
 
+  /**
+   * Finds the inline REPL block that contains the given cursor line and returns
+   * the line number of its header (the first `>>>` line), or null when the
+   * cursor is not inside any inline REPL block. Used by the keyboard shortcut,
+   * which has no CodeLens argument to tell it which block to run.
+   */
+  function findReplHeaderLineAtCursor(
+    document: vscode.TextDocument,
+    cursorLine: number
+  ): number | null {
+    const { lineCount } = document;
+    for (let lineNum = 0; lineNum < lineCount;) {
+      const [nextLine, res] = parseReplBlockAt(document, lineNum);
+      lineNum = nextLine;
+      if (res) {
+        const blockStart = res.headerRange.start.line;
+        const blockEnd = res.outputRange.end.line;
+        if (cursorLine >= blockStart && cursorLine <= blockEnd) {
+          return blockStart;
+        }
+      }
+    }
+    return null;
+  }
+
   function generateReplacement(
     response: string,
     outputRange: vscode.Range,
@@ -106,19 +134,26 @@ export function registerInlineRepl(context: vscode.ExtensionContext) {
 
   async function runInlineRepl(
     editor: vscode.TextEditor,
-    edit: vscode.TextEditorEdit,
-    arg?: { headerLineNum: number; isRunning: { flag: boolean } }
+    _edit: vscode.TextEditorEdit,
+    arg?: { headerLineNum: number; isRunning?: { flag: boolean } }
   ): Promise<void> {
-    if (!arg) return;
-    const { headerLineNum, isRunning } = arg;
+    // From the CodeLens we get the block's header line. From a keyboard
+    // shortcut there is no argument, so locate the inline REPL block that
+    // contains the current cursor position instead.
+    let headerLineNum: number;
+    if (arg && typeof arg.headerLineNum === 'number') {
+      headerLineNum = arg.headerLineNum;
+    } else {
+      const found = findReplHeaderLineAtCursor(editor.document, editor.selection.active.line);
+      if (found === null) return;
+      headerLineNum = found;
+    }
+
+    const isRunning = arg?.isRunning ?? { flag: false };
     if (isRunning.flag) return;
     isRunning.flag = true;
 
     const lang = detectLanguage(editor.document);
-    if (!lang) {
-      isRunning.flag = false;
-      return;
-    }
 
     const [, res] = parseReplBlockAt(editor.document, headerLineNum);
     if (!res) {
@@ -254,6 +289,27 @@ export function registerInlineRepl(context: vscode.ExtensionContext) {
 
         return codeLenses;
       }
+    })
+  );
+
+  // Keep the `quarto-wingman.inlineReplActive` context key in sync with the
+  // cursor position so the keyboard shortcut only overrides its key when the
+  // cursor actually sits inside a `# >>>` block. This lets the shortcut work in
+  // any language without hijacking the key everywhere else.
+  const setReplContext = (editor: vscode.TextEditor | undefined): void => {
+    const active =
+      !!editor &&
+      findReplHeaderLineAtCursor(editor.document, editor.selection.active.line) !== null;
+    vscode.commands.executeCommand('setContext', 'quarto-wingman.inlineReplActive', active);
+  };
+
+  setReplContext(vscode.window.activeTextEditor);
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor(setReplContext),
+    vscode.window.onDidChangeTextEditorSelection(e => setReplContext(e.textEditor)),
+    vscode.workspace.onDidChangeTextDocument(e => {
+      const editor = vscode.window.activeTextEditor;
+      if (editor && e.document === editor.document) setReplContext(editor);
     })
   );
 }

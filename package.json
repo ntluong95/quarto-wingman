@@ -29,7 +29,8 @@
   "activationEvents": [
     "onLanguage:python",
     "onLanguage:r",
-    "onLanguage:quarto"
+    "onLanguage:quarto",
+    "onStartupFinished"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -174,6 +175,12 @@
         "key": "ctrl+shift+i",
         "mac": "cmd+shift+i",
         "when": "editorTextFocus && !findInputFocussed && !replaceInputFocussed && editorLangId == 'quarto'"
+      },
+      {
+        "command": "inline-repl.run",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "when": "editorTextFocus && quarto-wingman.inlineReplActive && editorLangId != 'quarto' && !findInputFocussed && !replaceInputFocussed"
       }
     ],
     "grammars": [
